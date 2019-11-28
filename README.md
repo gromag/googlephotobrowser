@@ -1,5 +1,10 @@
 # GooglePhotoBrowser
 
+Quick and dirty Google photo search (a workaround to the broken date search)
+
+
+------
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.1.0.
 
 ## Development server
