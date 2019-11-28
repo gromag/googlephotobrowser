@@ -9,6 +9,7 @@ import { FormsModule } from '@angular/forms';
 import { GoogleBrowserService } from './google-browser.service'
 import { SocialLoginModule, AuthServiceConfig, LoginOpt } from "angularx-social-login";
 import { GoogleLoginProvider } from "angularx-social-login";
+import { CookieService } from 'ngx-cookie-service';
 
 const googleLoginOptions: LoginOpt = {
   scope: 'profile email'
@@ -45,7 +46,8 @@ export function provideConfig() {
     {
       provide: AuthServiceConfig,
       useFactory: provideConfig
-    }
+    },
+    CookieService
   ],
   bootstrap: [AppComponent]
 })

@@ -7,10 +7,27 @@
         <li>{{ user.name }}</li>
         <li>{{ user.email }}</li>
       </ul>
-
+      <button type="button" class="btn btn-dark" (click)="signOut()">Sign out</button>
 </div>
   
 <form *ngIf="user != undefined">
-  <label><input class="form-control" type="date" name="date" [(ngModel)]="mediaDate"/></label>
-  <button type="button" class="btn btn-primary" (click)="search()">Search</button>
+  <div class="input-group mb-3">
+    <div class="input-group-prepend">
+      <label class="input-group-text" for="date">Date</label>
+    </div>
+    <input class="form-control" type="date" name="date" [(ngModel)]="mediaDate"/>
+  </div>
+  <div class="input-group mb-3">
+    <div class="input-group-prepend">
+      <label class="input-group-text" for="pageSize">Page size</label>
+    </div>
+    <select name="pageSize" class="form-control" [(ngModel)]="pageSize">
+      <option value="10" selected>10</option>
+      <option value="50">50</option>
+      <option value="100">100</option>
+    </select>
+    <div class="input-group-append">
+      <button type="button" class="btn btn-primary" (click)="search()">Search</button>
+    </div>
+  </div>
 </form>

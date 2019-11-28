@@ -17,7 +17,7 @@ export class GoogleBrowserService {
   searchPerformed: EventEmitter<any> = new EventEmitter();
 
 
-  public searchByDate(mediaDate: Date, accessToken: string){
+  public searchByDate(mediaDate: Date, pageSize: number, accessToken: string){
 
     let headers = new HttpHeaders();
     headers = headers.append('Authorization', 'Bearer ' + accessToken);
@@ -25,7 +25,7 @@ export class GoogleBrowserService {
 
 
     const body = {
-      "pageSize": 100,
+      "pageSize": pageSize,
       "filters": {
         "dateFilter": {
           "dates": [
