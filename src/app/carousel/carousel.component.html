@@ -1,0 +1,14 @@
+{{data}}
+
+
+<div *ngIf="data">
+<ul>
+  <li *ngFor="let item of data['mediaItems']">
+    <ul>
+      <li>{{item['filename']}}</li>
+      <li>{{item['mediaMetadata']['creationTime']}}</li>
+      <li><img src="{{item['baseUrl']}}"/></li>
+    </ul>
+  </li>
+</ul>
+</div>
