@@ -10,7 +10,7 @@
       <button type="button" class="btn btn-dark" (click)="signOut()">Sign out</button>
 </div>
   
-<form *ngIf="user != undefined">
+<form *ngIf="user != undefined" (ngSubmit)="search()">
   <div class="input-group mb-3">
     <div class="input-group-prepend">
       <label class="input-group-text" for="date">Date</label>
@@ -27,7 +27,7 @@
       <option value="100">100</option>
     </select>
     <div class="input-group-append">
-      <button type="button" class="btn btn-primary" (click)="search()">Search</button>
+      <button class="btn btn-primary" >Search</button>
     </div>
   </div>
 </form>
