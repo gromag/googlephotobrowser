@@ -23,7 +23,9 @@ export class GoogleBrowserService {
     headers = headers.append('Authorization', 'Bearer ' + accessToken);
     headers = headers.append('Content-Type', 'application/json')
 
+
     const body = {
+      "pageSize": 100,
       "filters": {
         "dateFilter": {
           "dates": [

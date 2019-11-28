@@ -1,17 +1,16 @@
-<form>
-  <div class="form-group">
-    <h2>Login</h2>
-    <input type="text" name="accessToken" placeholder="Access Token" [(ngModel)]="accessToken"/>
-  </div>
+<button type="button" class="btn btn-dark" (click)="signInWithGoogle()" *ngIf="user==undefined">Sign in Google</button>
 
-</form>
-{{accessToken}}
+<div *ngIf="user!=undefined" class="userdetails">
+    <img src="{{ user.photoUrl }}"/>
 
+      <ul class="meta">
+        <li>{{ user.name }}</li>
+        <li>{{ user.email }}</li>
+      </ul>
 
-<form *ngIf="accessToken != ''">
-  <h2>Dashboard</h2>
-  <label>Date:<input type="date" name="date" [(ngModel)]="mediaDate"/></label>
-  {{mediaDate}}
-
-  <button (click)="search()">Search</button>
+</div>
+  
+<form *ngIf="user != undefined">
+  <label><input class="form-control" type="date" name="date" [(ngModel)]="mediaDate"/></label>
+  <button type="button" class="btn btn-primary" (click)="search()">Search</button>
 </form>
