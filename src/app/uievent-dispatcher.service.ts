@@ -5,7 +5,8 @@ import { Injectable, EventEmitter } from '@angular/core';
 })
 export class UIEventDispatcherService {
 
-  public statuses = {LOADING : 1, READY : 0 };
+
+  public statuses = {LOADING : 1, READY : 0, SIGNEDOUT : 2 };
 
 
   nextPageTokenChanged: EventEmitter<any> = new EventEmitter();
@@ -17,6 +18,10 @@ export class UIEventDispatcherService {
 
   pageReady(){
     this.pageStateChanged.emit(this.statuses.READY);
+  }
+
+  logout() {
+    this.pageStateChanged.emit(this.statuses.SIGNEDOUT);
   }
 
   constructor() { }

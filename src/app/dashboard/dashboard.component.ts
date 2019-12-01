@@ -47,6 +47,7 @@ export class DashboardComponent implements OnInit {
 
   signOut(): void {
     this.authService.signOut();
+    this.uiEventDispatcher.logout();
   }
 
   search(nextPageToken: string){

@@ -23,8 +23,16 @@ export class CarouselComponent implements OnInit {
     private uiEventDispatcher: UIEventDispatcherService) { 
 
     gbrowser.searchPerformed.subscribe(d => this.data = d);
-    uiEventDispatcher.pageStateChanged.subscribe(s => this.status = s);
+    uiEventDispatcher.pageStateChanged.subscribe(s => this.updateStatus(s));
     this.statuses = uiEventDispatcher.statuses;
+
+  }
+
+  updateStatus(s:any){
+    this.status = s;
+    if(this.status === this.uiEventDispatcher.statuses.SIGNEDOUT){
+      this.data = null;
+    }
 
   }
 
