@@ -22,6 +22,7 @@ export class DashboardComponent implements OnInit {
   pageSizeCookieName: string = 'search-page-size';
   status: number; 
   statuses : any;
+  weekDays: Array<string> =  ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
 
   public user: SocialUser;
   private loggedIn: boolean;
@@ -48,6 +49,16 @@ export class DashboardComponent implements OnInit {
   signOut(): void {
     this.authService.signOut();
     this.uiEventDispatcher.logout();
+  }
+
+  getWeekDay(){
+    if(!this.mediaDate){
+      return "";
+    }
+    let d = new Date(this.mediaDate);
+    let day = d.getUTCDay();
+    return this.weekDays[day];
+
   }
 
   search(nextPageToken: string){

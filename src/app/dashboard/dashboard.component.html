@@ -19,8 +19,13 @@
       <label class="input-group-text" for="date">Date</label>
     </div>
     <input class="form-control" type="date" name="date" [(ngModel)]="mediaDate"/>
+    <div class="input-group-append day-of-week">
+        <label class="input-group-text" for="date">{{getWeekDay()}}</label>
+    </div>
   </div>
+
  </div>
+ 
  <div class="pagesize-container">
   <div class="input-group mb-3">
     <div class="input-group-prepend">
