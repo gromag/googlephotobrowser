@@ -23,7 +23,7 @@ export class DashboardComponent implements OnInit {
   status: number; 
   statuses : any;
 
-  private user: SocialUser;
+  public user: SocialUser;
   private loggedIn: boolean;
 
 
