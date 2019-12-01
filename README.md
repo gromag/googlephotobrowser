@@ -1,6 +1,6 @@
 # GooglePhotoBrowser
 
-Quick and dirty Google photo search (a workaround to the broken date search)
+Google photo search (a quick and dirty workaround to the inconsistent Google Photo search when using dates)
 
 
 ------
@@ -18,6 +18,14 @@ Run `ng generate component component-name` to generate a new component. You can 
 ## Build
 
 Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+
+## Deploy to GitHubPages
+
+`ng build --prod --base-href https://gromag.github.io/googlephotobrowser/`
+`ngh --dir dist/GooglePhotoBrowser -no-silent`
+
+Reference: https://dzone.com/articles/how-to-deploy-an-angular-application-to-github 
+
 
 ## Running unit tests
 
