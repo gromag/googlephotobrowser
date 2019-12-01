@@ -10,9 +10,10 @@ import { GoogleBrowserService } from './google-browser.service'
 import { SocialLoginModule, AuthServiceConfig, LoginOpt } from "angularx-social-login";
 import { GoogleLoginProvider } from "angularx-social-login";
 import { CookieService } from 'ngx-cookie-service';
+import { UIEventDispatcherService } from './uievent-dispatcher.service';
 
 const googleLoginOptions: LoginOpt = {
-  scope: 'profile email'
+  scope: 'https://www.googleapis.com/auth/photoslibrary.readonly'
 }; // https://developers.google.com/api-client-library/javascript/reference/referencedocs#gapiauth2clientconfig
 
 
@@ -42,6 +43,7 @@ export function provideConfig() {
   ],
   providers: [
     HttpClientModule, 
+    UIEventDispatcherService,
     GoogleBrowserService,
     {
       provide: AuthServiceConfig,

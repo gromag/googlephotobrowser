@@ -4,6 +4,8 @@ import { AuthService } from "angularx-social-login";
 import { FacebookLoginProvider, GoogleLoginProvider } from "angularx-social-login";
 import { SocialUser } from "angularx-social-login";
 import { CookieService } from 'ngx-cookie-service';
+import { CarouselComponent } from '../carousel/carousel.component';
+import { UIEventDispatcherService } from '../uievent-dispatcher.service';
 
 
 @Component({
@@ -13,9 +15,13 @@ import { CookieService } from 'ngx-cookie-service';
 })
 export class DashboardComponent implements OnInit {
 
+
   mediaDate: string;
   pageSize: string = "10";
   mediaDateCookieName: string = 'search-media-date';
+  pageSizeCookieName: string = 'search-page-size';
+  status: number; 
+  statuses : any;
 
   private user: SocialUser;
   private loggedIn: boolean;
@@ -24,7 +30,15 @@ export class DashboardComponent implements OnInit {
   constructor(
     private gbrowser: GoogleBrowserService,
     private authService: AuthService,
-    private cookieService: CookieService) { 
+    private cookieService: CookieService,
+    private uiEventDispatcher: UIEventDispatcherService) { 
+
+      gbrowser.searchPerformed.subscribe(d => uiEventDispatcher.pageReady());
+      uiEventDispatcher.nextPageTokenChanged.subscribe(t => this.search(t));
+      uiEventDispatcher.pageStateChanged.subscribe(s => this.status = s);
+      this.status = uiEventDispatcher.statuses.READY;
+      this.statuses = uiEventDispatcher.statuses;
+ 
   }
 
   signInWithGoogle(): void {
@@ -35,9 +49,11 @@ export class DashboardComponent implements OnInit {
     this.authService.signOut();
   }
 
-  search(){
+  search(nextPageToken: string){
+    this.uiEventDispatcher.pageLoading();
     this.cookieService.set( this.mediaDateCookieName, this.mediaDate);
-    this.gbrowser.searchByDate(new Date(this.mediaDate), parseInt(this.pageSize), this.user.authToken);
+    this.cookieService.set( this.pageSizeCookieName, this.pageSize);
+    this.gbrowser.searchByDate(new Date(this.mediaDate), parseInt(this.pageSize), this.user.authToken, nextPageToken);
   }
 
   ngOnInit() {
@@ -46,6 +62,8 @@ export class DashboardComponent implements OnInit {
       this.loggedIn = (user != null);
     });
   
-    this.mediaDate = this.cookieService.get(this.mediaDateCookieName);
+    let today = new Date();
+    this.mediaDate = this.cookieService.get(this.mediaDateCookieName) || today.toISOString().split('T')[0];
+    this.pageSize = this.cookieService.get(this.pageSizeCookieName) || "10";
   }
 }

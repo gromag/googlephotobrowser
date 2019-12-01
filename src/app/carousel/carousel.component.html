@@ -1,12 +1,26 @@
 <div *ngIf="data" class="carousel">
   <ul>
-    <li class="float-left tile shadow" *ngFor="let item of data['mediaItems']">
+    <li class="float-left tile shadow" *ngFor="let item of data['mediaItems']; let i = index">
       <ul class="meta">
-        <li>{{item['filename']}}</li>
-        <li>{{item['mediaMetadata']['creationTime']}}</li>
+        <li>Photo no. {{i +1}}</li>
+        <li>Date:{{item['mediaMetadata']['creationTime']}}</li>
+        <li><a href="{{item['productUrl']}}" target="preview">{{item['filename']}}</a></li>
       </ul>
       <img src="{{item['baseUrl']}}"/>
       
     </li>
   </ul>
+  <div class="container prev-next">
+
+    <button class="btn" 
+      [class.btn-primary] = "status == statuses.READY"
+      [class.btn-secondary] = "status == statuses.LOADING"
+      [disabled] = "status == statuses.LOADING || previousPageToken.length === 0"  
+      (click)="goPreviousPageToken(previousPageToken)">Prev</button>
+    <button class="btn" 
+      [class.btn-primary] = "status == statuses.READY"
+      [class.btn-secondary] = "status == statuses.LOADING"
+      [disabled] = "status == statuses.LOADING || !data['nextPageToken']"  
+      (click)="goNextPage(data['nextPageToken'])">Next</button>
+  </div>
 </div>

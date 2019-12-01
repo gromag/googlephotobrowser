@@ -4,7 +4,7 @@
     <img src="{{ user.photoUrl }}"/>
 
       <ul class="meta">
-        <li>{{ user.name }}</li>
+<!--        <li>{{ user.name }}</li> -->
         <li>{{ user.email }}</li>
       </ul>
       <button type="button" class="btn btn-dark" (click)="signOut()">Sign out</button>
@@ -27,7 +27,11 @@
       <option value="100">100</option>
     </select>
     <div class="input-group-append">
-      <button class="btn btn-primary" >Search</button>
+      <button class="btn" 
+        [class.btn-primary] = "status == statuses.READY"
+        [class.btn-secondary] = "status == statuses.LOADING"
+        [disabled] = "status == statuses.LOADING">
+        Search</button>
     </div>
   </div>
 </form>

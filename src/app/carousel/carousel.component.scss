@@ -36,4 +36,14 @@
         }
     }
 
+    .prev-next {
+
+        clear:both;
+        text-align: center;
+
+        button:first-child {
+            margin-right: 5px;
+        }
+    }
+
 }

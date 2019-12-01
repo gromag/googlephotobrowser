@@ -17,7 +17,7 @@ export class GoogleBrowserService {
   searchPerformed: EventEmitter<any> = new EventEmitter();
 
 
-  public searchByDate(mediaDate: Date, pageSize: number, accessToken: string){
+  public searchByDate(mediaDate: Date, pageSize: number, accessToken: string, nextPageToken: string){
 
     let headers = new HttpHeaders();
     headers = headers.append('Authorization', 'Bearer ' + accessToken);
@@ -36,7 +36,8 @@ export class GoogleBrowserService {
             }
           ]
         }
-      }
+      },
+      "pageToken": (nextPageToken || "")
     };
 
     this.http
