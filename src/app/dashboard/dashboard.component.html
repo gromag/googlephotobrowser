@@ -1,5 +1,8 @@
-<button type="button" class="btn btn-dark" (click)="signInWithGoogle()" *ngIf="user==undefined">Sign in Google</button>
+<div class="login container" *ngIf="user==undefined">
 
+  <button type="button" class="btn btn-dark" (click)="signInWithGoogle()" >Sign in Google</button>
+
+</div>
 <div *ngIf="user!=undefined" class="userdetails">
     <img src="{{ user.photoUrl }}"/>
 
