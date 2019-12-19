@@ -6,7 +6,7 @@ Google Photo search by date has become fuzzy.
 
 I'm not sure since when but searching by date returns unexpected results.
 
-Instead of matching the exact date it seems to match part of the date (e.g. searching for 21/11/2019 might return 21/06/2019 by matching the only the day)
+Instead of matching the exact date it seems to match part of the date (e.g. searching for 21/11/2019 might return media items from 21/06/2019 by matching the only the day and not the entire date)
 
 This project is a quick and dirty workaround to search photos by exact date.
 
