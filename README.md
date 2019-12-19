@@ -1,40 +1,20 @@
-# GooglePhotoBrowser
+# Google Photo search by date
 
-Google photo search (a quick and dirty workaround to the inconsistent Google Photo search when using dates)
+## A consistent Google photo search by date
 
+Google Photo search by date has become fuzzy.
+
+I'm not sure since when but searching by date returns unexpected results.
+
+Instead of matching the exact date it seems to match part of the date (e.g. searching for 21/11/2019 might return 21/06/2019 by matching the only the day)
+
+This project is a quick and dirty workaround to search photos by exact date.
+
+Preview project at: https://gromag.github.io/googlephotobrowser/
+
+Reference:
+- https://developers.google.com/photos/library/guides/get-started
+- https://developers.google.com/photos/library/guides/apply-filters#dates-date-ranges
+- https://github.com/abacritt/angularx-social-login
 
 ------
-
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.1.0.
-
-## Development server
-
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
-
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
-
-## Deploy to GitHubPages
-
-`ng build --prod --base-href https://gromag.github.io/googlephotobrowser/`
-`ngh --dir dist/GooglePhotoBrowser -no-silent`
-
-Reference: https://dzone.com/articles/how-to-deploy-an-angular-application-to-github 
-
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
